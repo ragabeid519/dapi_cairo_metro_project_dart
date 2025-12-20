@@ -164,6 +164,7 @@ void main(List<String> arguments) {
   // print(line_three_stations.contains("Attaba (Line 2)"));
   // print(line_three_stations.contains("Nasser (Line 1)"));
 
+  //------------------start metro trip planner---------------------//
   if (startPlatform.isEmpty || endPlatform.isEmpty) {
     print("Invalid input. Please enter valid station names.");
   } else if (!lineOneStations.contains(startPlatform) &&
