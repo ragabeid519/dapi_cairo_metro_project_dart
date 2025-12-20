@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:mirrors';
 
 /////////////////////////calculte ticker price/////////////////////
 void ticketPriceCalculation(int numberOfStops) {
@@ -163,7 +164,37 @@ void main(List<String> arguments) {
   // print(line_three_stations.contains("Attaba (Line 2)"));
   // print(line_three_stations.contains("Nasser (Line 1)"));
 
-  if (startPlatform == endPlatform) {
+  if (startPlatform.isEmpty || endPlatform.isEmpty) {
+    print("Invalid input. Please enter valid station names.");
+  } else if (!lineOneStations.contains(startPlatform) &&
+      !lineTwoStations.contains(startPlatform) &&
+      !lineThreeImbabaDirction.contains(startPlatform) &&
+      !lineThreeCairoUnversityDirction.contains(startPlatform)) {
+    print("Invalid start station. Please enter a valid station name.");
+    print("Choose from the following stations:");
+    print("Line 1 Stations: ${lineOneStations.join(', ')}");
+    print("Line 2 Stations: ${lineTwoStations.join(', ')}");
+    print(
+      "Line 3 Imbaba Direction Stations: ${lineThreeImbabaDirction.join(', ')}",
+    );
+    print(
+      "Line 3 Cairo University Direction Stations: ${lineThreeCairoUnversityDirction.join(', ')}",
+    );
+  } else if (!lineOneStations.contains(endPlatform) &&
+      !lineTwoStations.contains(endPlatform) &&
+      !lineThreeImbabaDirction.contains(endPlatform) &&
+      !lineThreeCairoUnversityDirction.contains(endPlatform)) {
+    print("Invalid end station. Please enter a valid station name.");
+    print("Choose from the following stations:");
+    print("Line 1 Stations: ${lineOneStations.join(', ')}");
+    print("Line 2 Stations: ${lineTwoStations.join(', ')}");
+    print(
+      "Line 3 Imbaba Direction Stations: ${lineThreeImbabaDirction.join(', ')}",
+    );
+    print(
+      "Line 3 Cairo University Direction Stations: ${lineThreeCairoUnversityDirction.join(', ')}",
+    );
+  } else if (startPlatform == endPlatform) {
     print("You are already at your destination.");
     /////////////////////////line one direction/////////////////////
   } else if (lineOneStations.contains(startPlatform) &&
@@ -867,6 +898,7 @@ void main(List<String> arguments) {
     print("Route: ${routeFromChange2.join(' -> ')}");
     print("Thank you for using our metro trip planner!");
   } else {
-    print("Trip involves multiple lines or invalid stations.");
+    print("No direct route available between $startPlatform and $endPlatform.");
+    print("Please consider alternative routes or stations.");
   }
 }
