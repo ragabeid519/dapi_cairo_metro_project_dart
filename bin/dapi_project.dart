@@ -30,6 +30,42 @@ List<String> getRoute({
   }
 }
 
+printResult({
+  required int numberOfStops,
+  required int time,
+  required String direction,
+  required List<String> route,
+}) {
+  print("Number of stops: $numberOfStops");
+  print("Estimated time to arrive: $time minutes");
+  ticketPriceCalculation(numberOfStops);
+  print("Direction: $direction");
+  print("Route: ${route.join(' -> ')}");
+  print("Thank you for using our metro trip planner!");
+}
+
+printResultMaltiLines({
+  required int numberOfStops,
+  required int time,
+  required String direction1,
+  required String direction2,
+  required List<String> routeToChange,
+  required List<String> routeFromChange,
+  required String startPlatform,
+  required String endPlatform,
+}) {
+  print("Number of stops: $numberOfStops");
+  print("Estimated time to arrive: $time minutes");
+  ticketPriceCalculation(numberOfStops);
+  print(
+    "From $startPlatform take line 1 towards $direction1 to Al-Shohadaa (Line 2) then change to line 2 towards $direction2 to $endPlatform.",
+  );
+  print("Route: ${routeToChange.join(' -> ')}");
+  print("         Change at Al-Shohadaa (Line 2)        ");
+  print("Route: ${routeFromChange.join(' -> ')}");
+  print("Thank you for using our metro trip planner!");
+}
+
 void main(List<String> arguments) {
   // Entry point for the dapi_project command-line application.
   print("Enter start platform");
@@ -107,8 +143,8 @@ void main(List<String> arguments) {
   ////////////////// 34 stations in line 3 /////////////////
 
   List<String> lineThreeStations = [
-    "Adly Mansour",
-    "El Haykestep",
+    "Adly Mansour", //// 0           0 -1  = -1
+    "El Haykestep", ////1
     "Omar Ibn El-Khattab",
     "Qobaa",
     "Hesham Barakat",
@@ -124,6 +160,8 @@ void main(List<String> arguments) {
     "Abbassia",
     "Abdou Pasha",
     "El Geish",
+
+    ///6 -2
     "Bab El Shaaria",
     "Attaba (Line 2)",
     "Nasser (Line 1)",
@@ -212,12 +250,12 @@ void main(List<String> arguments) {
     String direction = (endIndex > startIndex)
         ? "Helwan direction"
         : "New El Marg direction";
-    print("Number of stops: $numberOfStops");
-    print("Estimated time to arrive: $time minutes");
-    ticketPriceCalculation(numberOfStops);
-    print("Direction: $direction");
-    print("Route: ${route.join(' -> ')}");
-    print("Thank you for using our metro trip planner!");
+    printResult(
+      numberOfStops: numberOfStops,
+      time: time,
+      direction: direction,
+      route: route,
+    );
     ////////////////////////line two direction/////////////////////
   } else if (lineTwoStations.contains(startPlatform) &&
       lineTwoStations.contains(endPlatform)) {
@@ -233,12 +271,12 @@ void main(List<String> arguments) {
     String direction = (endIndex > startIndex)
         ? "El-Mounib direction"
         : "Shubra El-Kheima direction";
-    print("Number of stops: $numberOfStops");
-    print("Estimated time to arrive: $time minutes");
-    ticketPriceCalculation(numberOfStops);
-    print("Direction: $direction");
-    print("Route: ${route.join(' -> ')}");
-    print("Thank you for using our metro trip planner!");
+    printResult(
+      numberOfStops: numberOfStops,
+      time: time,
+      direction: direction,
+      route: route,
+    );
     ////////////////////////line three imbaba direction/////////////////////
   } else if (lineThreeImbabaDirction.contains(startPlatform) &&
       lineThreeImbabaDirction.contains(endPlatform)) {
@@ -254,12 +292,12 @@ void main(List<String> arguments) {
     String direction = (endIndex > startIndex)
         ? "Imbaba direction"
         : "Adly Mansour direction";
-    print("Number of stops: $numberOfStops");
-    print("Estimated time to arrive: $time minutes");
-    ticketPriceCalculation(numberOfStops);
-    print("Direction: $direction");
-    print("Route: ${route.join(' -> ')}");
-    print("Thank you for using our metro trip planner!");
+    printResult(
+      numberOfStops: numberOfStops,
+      time: time,
+      direction: direction,
+      route: route,
+    );
     ////////////////////////line three cairo university direction/////////////////////
   } else if (lineThreeCairoUnversityDirction.contains(startPlatform) &&
       lineThreeCairoUnversityDirction.contains(endPlatform)) {
@@ -275,12 +313,12 @@ void main(List<String> arguments) {
     String direction = (endIndex > startIndex)
         ? "Cairo University direction"
         : "Adly Mansour direction";
-    print("Number of stops: $numberOfStops");
-    print("Estimated time to arrive: $time minutes");
-    ticketPriceCalculation(numberOfStops);
-    print("Direction: $direction");
-    print("Route: ${route.join(' -> ')}");
-    print("Thank you for using our metro trip planner!");
+    printResult(
+      numberOfStops: numberOfStops,
+      time: time,
+      direction: direction,
+      route: route,
+    );
     ////////////////////////line one to line two/////////////////////
   } else if (lineOneStations.contains(startPlatform) &&
       lineTwoStations.contains(endPlatform)) {
